@@ -1,0 +1,5 @@
+# br_config.yaml 示例
+# topology_file: 指定 topology.yaml 的路径
+# 你可以根据实际情况修改路径
+
+topology_file: "/home/zachary/tikv-server/topology.yaml"

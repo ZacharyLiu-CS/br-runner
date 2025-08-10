@@ -1,0 +1,69 @@
+# # Global variables are applied to all deployments and used as the default value of
+# # the deployments if a specific deployment value is missing.
+global:
+  # # The user who runs the tidb cluster.
+  user: "zachary"
+  # # group is used to specify the group name the user belong to,if it's not the same as user.
+  # group: "tidb"
+  # # SSH port of servers in the managed cluster.
+  # # systemd_mode is used to select whether to use sudo permissions. When its value is set to user, there is no need to add global.user to sudoers. The default value is system.
+  # systemd_mode: "system"
+  ssh_port: 22
+  # # Storage directory for cluster deployment files, startup scripts, and configuration files.
+  deploy_dir: "/home/zachary/tikv-server/tidb-deploy"
+  # # TiDB Cluster data storage directory
+  data_dir: "/home/zachary/tikv-server/tidb-data"
+  # # default listen_host for all components
+  listen_host: 0.0.0.0
+  # # Supported values: "amd64", "arm64" (default: "amd64")
+  arch: "amd64"
+
+
+# # Server configs are used to specify the configuration of PD Servers.
+pd_servers:
+  # # The ip address of the PD Server.
+  - host: 192.168.31.177
+    # SSH port of the server.
+    ssh_port: 22
+    name: "pd-0"
+    client_port: 2379
+    peer_port: 2380
+    deploy_dir: "/home/zachary/tikv-server/tidb-deploy/pd-2379"
+    data_dir: "/home/zachary/tikv-server/tidb-data/pd-2379"
+    log_dir: "/home/zachary/tikv-server/tidb-deploy/pd-2379/log"
+    config:
+      schedule.max-merge-region-size: 20
+      schedule.max-merge-region-keys: 200000
+  - host: 192.168.31.177
+    ssh_port: 22
+    name: "pd-1"
+    client_port: 12379
+    peer_port: 12380
+    deploy_dir: "/home/zachary/tikv-server/tidb-deploy/pd-12379"
+    data_dir: "/home/zachary/tikv-server/tidb-data/pd-12379"
+    log_dir: "/home/zachary/tikv-server/tidb-deploy/pd-12379/log"
+    config:
+      schedule.max-merge-region-size: 20
+      schedule.max-merge-region-keys: 200000
+  
+
+# # Server configs are used to specify the configuration of TiKV Servers.
+tikv_servers:
+  # # The ip address of the TiKV Server.
+  - host: 192.168.31.177
+    port: 20160
+    status_port: 20180
+    deploy_dir: "/home/zachary/tikv-server/tidb-deploy/tikv-20160"
+    data_dir: "/home/zachary/tikv-server/tidb-data/tikv-20160"
+    log_dir: "/home/zachary/tikv-server/tidb-deploy/tikv-20160/log"
+  - host: 192.168.31.177
+    port: 20161
+    status_port: 20181
+    deploy_dir: "/home/zachary/tikv-server/tidb-deploy/tikv-20161"
+    data_dir: "/home/zachary/tikv-server/tidb-data/tikv-20161"
+    log_dir: "/home/zachary/tikv-server/tidb-deploy/tikv-20161/log"
+
+
+    
+
+
