@@ -1,6 +1,6 @@
-# TiKV Server Configuration Tool
+# TiKV Br Runner Tool
 
-A Python-based tool for managing TiKV and PD server configurations. This tool reads server configurations from YAML files and provides easy access to host information for TiKV and PD servers.
+A Python-based tool for managing TiKV cluster backup and restore tool. This tool reads server configurations from YAML files and provides easy access to backup TiKV clusters.
 
 ## Features
 
